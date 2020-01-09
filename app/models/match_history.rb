@@ -1,0 +1,2 @@
+class MatchHistory < ApplicationRecord
+end
