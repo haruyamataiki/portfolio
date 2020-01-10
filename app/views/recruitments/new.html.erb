@@ -1,0 +1,27 @@
+   <h2>募集</h2>
+   <div class="row">
+    <%= form_for(@recruitment) do |f| %>
+       <h4>Title</h4>
+    <%= f.text_field :title ,class:"col-xs-12"%>
+
+       <h4>募集者</h4>
+
+       <h4>日時</h4>
+       <%= f.text_field :date ,class:"col-xs-12"%>
+
+       <h4>場所</h4>
+       <%= f.text_field :spot ,class:"col-xs-12"%>
+
+       <h4>レート</h4>
+       <%= f.text_field :score ,class:"col-xs-12"%>
+
+      <h4>ジャンル</h4>
+       <%= f.text_field :category ,class:"col-xs-12"%>
+
+        <h4>Opinion</h4>
+    <%= f.text_area :body ,class:"col-xs-12"%>
+ 
+    <%= f.submit '送信',class:"col-xs-12 btn btn-primary"%>
+ 
+    <% end %>
+    </div>

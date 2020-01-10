@@ -1,0 +1,49 @@
+<%= render 'layouts/c_header' %>
+<h1>Customers#show</h1>
+<p>Find me in app/views/customers/show.html.erb</p>
+
+<div class="container">
+
+    <h3>マイページ</h3>
+    <table border="1">
+        <tr>
+            <td>氏名</td>
+            <td>
+                <%= @customer.last_name %>
+                <%= @customer.first_name %>
+            </td>
+        </tr>
+        <tr>
+            <td>カナ</td>
+            <td>
+                <%= @customer.last_name_kana %>
+                <%= @customer.first_name_kana %>
+            </td>
+        </tr>
+        <tr>
+            <td>メール</td>
+            <td><%= @customer.email %></td>
+        </tr>
+        <tr>
+            <td>50m</td>
+            <td><%= event = (@customer.running_score) %>秒</td>
+        </tr>
+        <tr>
+            <td>立ち幅跳び</td>
+            <td><%= eventq = (@customer.running_score) %>m</td>
+        </tr>
+        <tr>
+            <td>反復横跳び</td>
+            <td><%= eventw = (@customer.agility_score) %>回</td>
+         </tr>
+         <tr>
+            <td>上体起こし</td>
+            <td><%= evenre = (@customer.sit_ups_score) %>回</td>
+        </tr>
+        <tr>
+            <td>握力</td>
+            <td><%= eventr = (@customer.grip_strength_score) %>kg</td>
+        </tr>
+    </table>
+    <%= link_to "編集する",edit_customer_path(@customer.id), class: 'btn btn-sm btn-primary' %>
+</div>
