@@ -3,7 +3,8 @@
 <p>Find me in app/views/customers/show.html.erb</p>
 
 <div class="container">
-
+    <h3>合計値</h3>
+    <h3><%= @customer.set_total %></h3>
     <h3>マイページ</h3>
     <table border="1">
         <tr>
@@ -26,24 +27,26 @@
         </tr>
         <tr>
             <td>50m</td>
-            <td><%= event = (@customer.running_score) %>秒</td>
+            <td><%= @customer.running_score %>秒</td>
         </tr>
         <tr>
             <td>立ち幅跳び</td>
-            <td><%= eventq = (@customer.running_score) %>m</td>
+            <td><%= @customer.jumping_score %>m</td>
         </tr>
         <tr>
             <td>反復横跳び</td>
-            <td><%= eventw = (@customer.agility_score) %>回</td>
+            <td><%= @customer.agility_score %>回</td>
          </tr>
          <tr>
             <td>上体起こし</td>
-            <td><%= evenre = (@customer.sit_ups_score) %>回</td>
+            <td><%= @customer.sit_ups_score %>回</td>
         </tr>
         <tr>
             <td>握力</td>
-            <td><%= eventr = (@customer.grip_strength_score) %>kg</td>
+            <td><%= @customer.grip_strength_score %>kg</td>
         </tr>
     </table>
     <%= link_to "編集する",edit_customer_path(@customer.id), class: 'btn btn-sm btn-primary' %>
+    <h2>募集</h2>
+    <%= link_to "募集する", new_recruitment_path, class: 'btn btn-sm btn-primary' %>
 </div>

@@ -25,31 +25,31 @@
         <tr>
             <td>50m走</td>
             <td>
-                <%= f.text_field :running_score %>
+                <%= f.number_field :running_score, step: '0.01' %>
             </td>
         </tr>
         <tr>
             <td>立ち幅跳び</td>
             <td>
-                <%= f.text_field :jumping_score %>
+                <%= f.number_field :jumping_score, step: '0.01' %>
             </td>
         </tr>
         <tr>
             <td>反復横跳び</td>
             <td>
-                <%= f.text_field :agility_score %>
+                <%= f.number_field :agility_score %>
             </td>
         </tr>
         <tr>
             <td>上体起こし</td>
             <td>
-                <%= f.text_field :sit_ups_score %>
+                <%= f.number_field :sit_ups_score %>
             </td>
         </tr>
         <tr>
             <td>握力</td>
             <td>
-                <%= f.text_field :grip_strength_score %>
+                <%= f.number_field :grip_strength_score, step: '0.01' %>
             </td>
         </tr>
     </table>

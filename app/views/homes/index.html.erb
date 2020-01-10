@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+
+			<% @recruitments.first(3).each do |recruitment| %>
+			<%= recruitment.title %>
+			<% end %>
+			<%= link_to '募集一覧', recruitments_path %>
+
+
+        </div>
+	</div>
+</div>

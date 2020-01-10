@@ -1,1 +1,17 @@
-index.html.erb
+<%= render 'layouts/c_header' %>
+<div class="container">
+    <div class="row">
+        <div class="table-responsive,col-lg-12">
+        	<table class="table">
+        		<% @recruitments.each do |recruitment| %>
+        		<tr>
+        			<td>投稿者</td>
+        			<td><%= recruitment.title %></td>
+        			<td><%= recruitment.body %></td>
+        			<td><%= link_to '詳細', recruitment_path(recruitment.id) %></td>
+			 	</tr>
+				<% end %>
+			</table>
+        </div>
+    </div>
+</div>
