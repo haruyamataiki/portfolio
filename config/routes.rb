@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   registrations: 'customers/registrations',
   passwords: 'customers/passwords'
   }
-  root to: 'rooms#show'
-  # root :to => 'homes#home'
+  # root to: 'rooms#show'
+  root :to => 'homes#home'
   resources :homes
   resources :customers
   resources :recruitments
