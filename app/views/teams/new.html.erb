@@ -1,0 +1,14 @@
+   <h2>募集</h2>
+   <div class="row">
+    <%= form_for(@team) do |f| %>
+       <h4>チーム名</h4>
+       <%= f.text_field :name ,class:"col-xs-12"%>
+
+       <h4>画像</h4>
+       <%= f.attachment_field :team_image %>
+
+
+       <%= f.submit '送信',class:"col-xs-12 btn btn-primary"%>
+
+    <% end %>
+    </div>

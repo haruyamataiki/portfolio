@@ -5,6 +5,8 @@ class CustomersController < ApplicationController
 
     def show
     	@customer = Customer.find(params[:id])
+      @recruitments = @customer.recruitments
+      @teams = @customer.teams
     end
 
     def new
@@ -25,7 +27,7 @@ class CustomersController < ApplicationController
     private
     def customer_params
       params.require(:customer).permit(:email, :encrypted_password, :last_name, :first_name, :last_name_kana, :first_name_kana, :running_score, :jumping_score, :agility_score,
-      	:sit_ups_score, :grip_strength_score, :account_status)
+      	:sit_ups_score, :grip_strength_score, :account_status, :profile_image)
     end
     def recruitment_params
       params.require(:recruitment).permit(:title, :body, :category, :score, :date, :spot)

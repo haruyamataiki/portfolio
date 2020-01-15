@@ -3,7 +3,9 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :recruitmens, dependent: :destroy
+  has_many :recruitments, dependent: :destroy
+  has_many :teams
+  attachment :profile_image
 
   # 50m走のスコアを点数に変換
     def convert_running

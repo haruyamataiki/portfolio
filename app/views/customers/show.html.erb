@@ -6,6 +6,7 @@
     <h3>合計値</h3>
     <h3><%= @customer.set_total %></h3>
     <h3>マイページ</h3>
+    <%= attachment_image_tag @customer, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
     <table border="1">
         <tr>
             <td>氏名</td>
@@ -49,4 +50,27 @@
     <%= link_to "編集する",edit_customer_path(@customer.id), class: 'btn btn-sm btn-primary' %>
     <h2>募集</h2>
     <%= link_to "募集する", new_recruitment_path, class: 'btn btn-sm btn-primary' %>
+
+    <div class="row">
+        <h2>募集履歴</h2>
+        <% @recruitments.each do |recruitment| %>
+            <table class="table">
+                <tr>
+                    <td><%= recruitment.title %></td>
+                    <td><%= recruitment.body %></td>
+    　           </tr>
+            </table>
+            <% end %>
+    </div>
+    <div class="row">
+        <h2>マイチーム</h2>
+                <table class="table">
+                    <% @teams.each do |team| %>
+                        <tr>
+                            <td><%= team.name %><%= link_to '詳細', team_path(team.id) %><td>
+                        </tr>
+                      <% end %>
+         <%= link_to "新しくチームを作る", new_team_path, class: 'btn btn-sm btn-primary' %>
+    </div>
+
 </div>
