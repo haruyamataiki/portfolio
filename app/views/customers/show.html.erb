@@ -6,47 +6,49 @@
     <h3>合計値</h3>
     <h3><%= @customer.set_total %></h3>
     <h3>マイページ</h3>
-    <%= attachment_image_tag @customer, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
-    <table border="1">
-        <tr>
-            <td>氏名</td>
-            <td>
-                <%= @customer.last_name %>
-                <%= @customer.first_name %>
-            </td>
-        </tr>
-        <tr>
-            <td>カナ</td>
-            <td>
-                <%= @customer.last_name_kana %>
-                <%= @customer.first_name_kana %>
-            </td>
-        </tr>
-        <tr>
-            <td>メール</td>
-            <td><%= @customer.email %></td>
-        </tr>
-        <tr>
-            <td>50m</td>
-            <td><%= @customer.running_score %>秒</td>
-        </tr>
-        <tr>
-            <td>立ち幅跳び</td>
-            <td><%= @customer.jumping_score %>m</td>
-        </tr>
-        <tr>
-            <td>反復横跳び</td>
-            <td><%= @customer.agility_score %>回</td>
-         </tr>
-         <tr>
-            <td>上体起こし</td>
-            <td><%= @customer.sit_ups_score %>回</td>
-        </tr>
-        <tr>
-            <td>握力</td>
-            <td><%= @customer.grip_strength_score %>kg</td>
-        </tr>
-    </table>
+    <div class="row">
+    <%= attachment_image_tag @customer, :profile_image, :fill, 300, 300, format: 'jpeg', fallback: "no_image.jpg" %>
+        <table border="1">
+            <tr>
+                <td>氏名</td>
+                <td>
+                    <%= @customer.last_name %>
+                    <%= @customer.first_name %>
+                </td>
+            </tr>
+            <tr>
+                <td>カナ</td>
+                <td>
+                    <%= @customer.last_name_kana %>
+                    <%= @customer.first_name_kana %>
+                </td>
+            </tr>
+            <tr>
+                <td>メール</td>
+                <td><%= @customer.email %></td>
+            </tr>
+            <tr>
+                <td>50m</td>
+                <td><%= @customer.running_score %>秒</td>
+            </tr>
+            <tr>
+                <td>立ち幅跳び</td>
+                <td><%= @customer.jumping_score %>m</td>
+            </tr>
+            <tr>
+                <td>反復横跳び</td>
+                <td><%= @customer.agility_score %>回</td>
+             </tr>
+             <tr>
+                <td>上体起こし</td>
+                <td><%= @customer.sit_ups_score %>回</td>
+            </tr>
+            <tr>
+                <td>握力</td>
+                <td><%= @customer.grip_strength_score %>kg</td>
+            </tr>
+        </table>
+    </div>
     <%= link_to "編集する",edit_customer_path(@customer.id), class: 'btn btn-sm btn-primary' %>
     <h2>募集</h2>
     <%= link_to "募集する", new_recruitment_path, class: 'btn btn-sm btn-primary' %>
@@ -72,5 +74,23 @@
                       <% end %>
          <%= link_to "新しくチームを作る", new_team_path, class: 'btn btn-sm btn-primary' %>
     </div>
+ 
+ <table border="1">
+        <tr>
+            <td>フォロー数：<%= @customer.follower.count %></td>
+            <td>フォロワー数：<%= @customer.followed.count %></td>
+        </tr>
+</table>
+ <table border="1">
+        <tr>
+            <% if current_customer != @customer %>
+                <% if current_customer.following?(@customer) %>
+                  <td><%= link_to 'フォロー外す', customer_relationship_path(@customer), method: :delete %></td>
+                <% else %>
+                  <td><%= link_to 'フォローする', customer_relationships_path(@customer), method: :post %></td>
+                <% end %>
+          <% end %>
+        </tr>
+</table>
 
 </div>

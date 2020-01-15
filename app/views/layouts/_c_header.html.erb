@@ -1,26 +1,31 @@
-<nav class="navbar-inverse mb-3">
-    <!-- //navbarを加えると、枠が丸くなる -->
-    <div class="container-fluid">
-        <header>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-transparent ">
+        <div class="container-fluid">
+            <div class="navbar-wrapper">
+                <a class="navbar-brand" href="#pablo">portfolio</a>
+            </div>
             <div class="navbar justify-content-end 　">
                 <!-- 右寄せになる部分 ================ -->
                 <ul class="nav navbar-expand navbar-right">
                     <!-- リンクのみ -->
+                    <li>
+                        <%= link_to "TOP", homes_path %>
+                    </li>
                     <li>
                         <%= link_to customer_path(current_customer), class: "fas fa-user mr-4 text-dark" do %>
                         <%= current_customer.last_name %>
                         <%= current_customer.first_name %>さん
                     </li>
                     <li>
-                        <%= link_to "   Logout", destroy_customer_session_path, method: :delete, class:"fas fa-sign-out-alt text-dark" %>
+                        <%= link_to "Logout", destroy_customer_session_path, method: :delete, class:"fas fa-sign-out-alt text-dark" %>
                         <% end %>
                     </li>
                 </ul>
-
             </div>
-                        </div>
-                    </div>
-                </dl>
-        </header>
-    </div>
-</nav>
+        </div>
+    </nav>
+</header>
+
+
+
+

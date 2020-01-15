@@ -7,6 +7,26 @@ class Customer < ApplicationRecord
   has_many :teams
   attachment :profile_image
 
+  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy # フォロー取得
+  has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy # フォロワー取得
+  has_many :following_user, through: :follower, source: :followed # 自分がフォローしている人
+  has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
+
+  def follow(customer)
+    follower.create(followed_id: customer.id)
+  end
+  
+  # ユーザーのフォローを外す
+  def unfollow(customer)
+    follower.find_by(followed_id: customer.id).destroy
+  end
+  
+  # フォローしていればtrueを返す
+  def following?(customer)
+    follower.exists?(followed_id: customer.id)
+   
+  end
+
   # 50m走のスコアを点数に変換
     def convert_running
   	case running_score

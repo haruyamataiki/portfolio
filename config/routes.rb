@@ -8,11 +8,16 @@ Rails.application.routes.draw do
   #root to: 'rooms#show'
   root :to => 'homes#home'
   resources :homes
-  resources :customers
-  resources :recruitments
+
+
+  resources :customers do
+    resources :relationships,only: [:create,:destroy]
+  end
   # resources :chat_rooms
+  resources :recruitments
   resources :messages
   resources :teams
+  resources :match_histories
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.htm
 

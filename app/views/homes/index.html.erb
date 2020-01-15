@@ -1,38 +1,52 @@
 <%= render 'layouts/c_header' %>
 <div class="container">
+	<h2>おすすめメンバー</h2>
     <div class="row">
-        <div class="col-lg-12">
-
-			<% @recruitments.first(3).each do |recruitment| %>
-			<table class="table">
-				<tr>
-				  <td><%= recruitment.date %><%= recruitment.title %></td>
-				</tr>
-			<% end %>
-		    </table>
-			<%= link_to '募集一覧', recruitments_path %>
-
-			<% @customers.first(3).each do |customer| %>
-			<table class="table">
-				<tr>
-				  <td><%= customer.set_total %></td>
-				  <td><%= customer.last_name %></td>
-				</tr>
-			<% end %>
-		    </table>
-			<%= link_to 'ユーザー一覧', customers_path %>
-
-			<% @teams.first(3).each do |team| %>
-			<table class="table">
-				<tr>
-				  <td><%= team.name %></td>
-				  <td><%= team.team_score %></td>
-				</tr>
-			<% end %>
-		    </table>
-			<%= link_to 'チーム一覧', customers_path %>
-
-
-        </div>
+    	<% @customers.first(3).each do |customer| %>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+        	<div class="card card-starts">
+        		<div class="card-header card-header-warning card-header-icon">
+        			<div class="card-icon">
+        			<%= attachment_image_tag customer, :profile_image, :fill, 150, 150, format: 'jpeg', fallback: "no_image.jpg" %>
+        			</div>
+        			<h4 class="card-category"><%= link_to customer.last_name,customer_path(customer) %></h4>
+					<h3 class="card-title"><%= customer.set_total %><small>rate</small></h3>
+				</div>
+			</div>
+		</div>
+		<% end %>
 	</div>
+		<h5><%= link_to 'ユーザー一覧へ', customers_path %></h5>
+
+　　<h2>おすすめチーム</h2>
+    <div class="row">
+    	<% @teams.first(3).each do |team| %>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+        	<div class="card card-starts">
+        		<div class="card-header card-header-warning card-header-icon">
+        			<div class="card-icon">
+        			<%= attachment_image_tag team, :team_image, :fill, 150, 150, format: 'jpeg', fallback: "no_image.jpg" %>
+        			</div>
+        			<h4 class="card-category"><%= link_to team.name,team_path(team) %></h4>
+					<h3 class="card-title"><%= team.team_score %></h3>
+				</div>
+			</div>
+		</div>
+		<% end %>
+	</div>
+		<h5><%= link_to 'チーム一覧', customers_path %></h5>
+
+　　<h2>対戦募集</h2>
+    <div class="row">
+		<% @recruitments.first(3).each do |recruitment| %>
+		<table class="table">
+			<tr>
+			  <td><%= recruitment.date %></td>
+			  <td><%= recruitment.title %></td>
+			  <td><%= link_to '詳細へ',recruitment_path(recruitment) %></td>
+			</tr>
+	    <% end %>
+		</table>
+	    <h5><%= link_to '募集一覧', recruitments_path %></h5>
+
 </div>

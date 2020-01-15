@@ -5,6 +5,7 @@ class RecruitmentsController < ApplicationController
 
   def show
     @recruitment = Recruitment.find(params[:id])
+    @match_histories = MatchHistories.new
   end
 
   def new
@@ -21,6 +22,21 @@ class RecruitmentsController < ApplicationController
   	   redirect_to customers_path(customer.id)
     end
   end
+
+  def edit
+    @recruitment = Recruitment.find(params[:id])
+  end
+
+   def update
+    @recruitment = Recruitment.find(params[:id])
+      if @recruitment.update(recruitment_params)
+         redirect_to recruitment_path(@recruitment.id),notice:"successfully"
+      else
+         flash[:notice] = "error"
+         render :edit
+      end
+   end
+
 
 
 private

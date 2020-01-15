@@ -1,12 +1,17 @@
 <%= render 'layouts/c_header' %>
 <div class="container">
     <div class="row">
-        <div class="col-lg-12">
-
-        	<h3>検索機能と自分と近い会員</h3>
-        	
-
-
-        </div>
-    </div>
-</div>
+    	<% @customers.each do |customer| %>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+        	<div class="card card-starts">
+        		<div class="card-header card-header-warning card-header-icon">
+        			<div class="card-icon">
+        			<%= attachment_image_tag customer, :profile_image, :fill, 150, 150, format: 'jpeg', fallback: "no_image.jpg" %>
+        			</div>
+        			<h4 class="card-category"><%= link_to customer.last_name,customer_path(customer) %></h4>
+					<h3 class="card-title"><%= customer.set_total %><small>rate</small></h3>
+				</div>
+			</div>
+		</div>
+		<% end %>
+	</div>

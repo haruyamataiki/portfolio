@@ -18,16 +18,19 @@ class CustomersController < ApplicationController
 
       def update
       @customer = Customer.find(params[:id])
-      @customer.update(customer_params)
+      if @customer.update(customer_params)
       @customer.set_total
       @customer.save
       redirect_to customer_path(@customer.id)
+    else
+      redirect_to customers_path
+      end
     end
 
     private
     def customer_params
       params.require(:customer).permit(:email, :encrypted_password, :last_name, :first_name, :last_name_kana, :first_name_kana, :running_score, :jumping_score, :agility_score,
-      	:sit_ups_score, :grip_strength_score, :account_status, :profile_image)
+      	:sit_ups_score, :grip_strength_score, :account_status, :profile_image, :total_score)
     end
     def recruitment_params
       params.require(:recruitment).permit(:title, :body, :category, :score, :date, :spot)
