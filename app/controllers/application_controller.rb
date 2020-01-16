@@ -15,7 +15,8 @@ class ApplicationController < ActionController::Base
 		when Admin
 		"/admin"#ログイン後に移動するpath
 		when Customer
-		"/customers/index"#ログイン後に移動するpath
+		"/customers/" + current_customer.id.to_s
+		#ログイン後に移動するpath
 		end
 	end
 	def after_sign_out_path_for(resource_or_scope)

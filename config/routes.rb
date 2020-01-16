@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   devise_for :customers, controllers: {
   sessions: 'customers/sessions',
   registrations: 'customers/registrations',
-  passwords: 'customers/passwords'
+  passwords: 'customers/passwords',
+  confirmations: 'customers/confirmations'
+
   }
   #root to: 'rooms#show'
   root :to => 'homes#home'
