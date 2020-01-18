@@ -18,3 +18,4 @@
 //= require bootstrap-sprockets
 //= require cable
 //= require channels/room
+//= require channels/test

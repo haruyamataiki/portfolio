@@ -5,12 +5,17 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
   has_many :recruitments, dependent: :destroy
   has_many :teams
+  has_many :messages
   attachment :profile_image
+
 
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy # フォロー取得
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy # フォロワー取得
   has_many :following_user, through: :follower, source: :followed # 自分がフォローしている人
   has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
+
+  has_many :team_relationships,foreign_key: "follower_id"
+  has_many :followed_teams, through: :team_relationships, source: :followed
 
   def follow(customer)
     follower.create(followed_id: customer.id)

@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   resources :teams
   resources :match_histories
 
+  # resourcesを使うとRESTfulなURLを自動生成できる
+  resources :rooms, only: %i[show]
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.htm
 
   mount ActionCable.server => '/cable'
