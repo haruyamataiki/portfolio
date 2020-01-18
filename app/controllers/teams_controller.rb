@@ -21,6 +21,7 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     @team.customer_id = current_customer.id
+    @team.build_room
 	 if @team.save
         redirect_to teams_path,notice:"successfully"
     else
@@ -36,5 +37,4 @@ private
     def recruitment_params
       params.require(:recruitment).permit(:date )
     end
-
 end

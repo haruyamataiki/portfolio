@@ -5,7 +5,7 @@
         	 <%= attachment_image_tag @team, :team_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
         	<table class="table">
         		<tr>
-                    <td><%= @team.name %></td>
+              <td><%= @team.name %></td>
         			<td><%= @team.team_score %></td>
 			 	</tr>
 			</table>
@@ -13,14 +13,16 @@
     	</div>
   	</div>
      <div class="row">
-            <% @recruitment.each do |recruitment| %>
+         <table>
+            <tbody>
               <tr>
-                <td><%= recruitment.date %>0月0</td>
+                <td>0月0</td>
                 <td><%=%>00 VS 00</td>
                 <td><%=%>勝ち敗け引き分け </td>
               </tr>
-             <% end %>
-           </tbody>
+             </tbody>
           </table>
+          
+          <%= link_to "hoge", room_path(@team.room.id) %>
      </div>
 </div>
