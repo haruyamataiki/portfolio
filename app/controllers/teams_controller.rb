@@ -5,12 +5,13 @@ class TeamsController < ApplicationController
 
   def show
   	@team = Team.find(params[:id])
+    @recruitment = Recruitment.find(params[:id])
   end
+
 
   def new
   	 # if current_customer.teams.find_by(team_id: params[:team_id]).empty?
  	if Team.find_by(customer_id: current_customer.id).present?
-    
     redirect_to customers_path
      else
      @team = Team.new
@@ -32,6 +33,8 @@ private
     def team_params
       params.require(:team).permit(:name, :team_image)
     end
-
+    def recruitment_params
+      params.require(:recruitment).permit(:date )
+    end
 
 end

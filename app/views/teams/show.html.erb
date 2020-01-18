@@ -1,3 +1,4 @@
+<%= render 'layouts/c_header' %>
 <div class="containar">
     <div class="row">
         <div class="table-responsive,col-lg-12">
@@ -11,4 +12,15 @@
 
     	</div>
   	</div>
+     <div class="row">
+            <% @recruitment.each do |recruitment| %>
+              <tr>
+                <td><%= recruitment.date %>0月0</td>
+                <td><%=%>00 VS 00</td>
+                <td><%=%>勝ち敗け引き分け </td>
+              </tr>
+             <% end %>
+           </tbody>
+          </table>
+     </div>
 </div>

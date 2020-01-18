@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
 		if resource_or_scope == :admin
       		new_admin_session_path	#ログアウト後に移動するpath
         else
-      		new_customer_session_path
+      		root_path
         end
 	end
 

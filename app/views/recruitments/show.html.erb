@@ -17,11 +17,9 @@
         <% if @recruitment.customer == current_customer %>
             <%= link_to "変更する", edit_recruitment_path, class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench"%>
         <% else %>
-                <%#= form_for(@match_histories,url:match_histories_path) do |f| %>
-                    <%#= f.submit "申し込む" class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench"%>
-                <%# end %>
-            <%= form_for(@,url:_path) do |f| %>
-                <%= f.submit "申し込む" class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench"%>
+            <%= form_for(@match_history,url:match_history_path,method: :post) do |f| %>
+            <%= f.hidden_field :recruitment_id, :value => @recruitment.id %>
+            <%= f.submit "申し込む" ,class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
             <% end %>
         <% end %>
     </div>

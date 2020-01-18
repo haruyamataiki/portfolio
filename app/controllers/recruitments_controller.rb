@@ -5,7 +5,6 @@ class RecruitmentsController < ApplicationController
 
   def show
     @recruitment = Recruitment.find(params[:id])
-    @match_histories = MatchHistories.new
   end
 
   def new
