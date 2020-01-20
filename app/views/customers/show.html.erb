@@ -1,26 +1,105 @@
 <%= render 'layouts/c_header' %>
-<h1>Customers#show</h1>
-<p>Find me in app/views/customers/show.html.erb</p>
+
+
+<div class="wrapper">
+    <div class="page-header clear-filter page-header-small" filter-color="orange">
+        <div class="page-header-image" data-parallax="true" style="background-image: url(&quot;../assets/img2.jpg&quot;);">
+            <div class="container">
+                <div class="row text-white">
+                    <div class="col-lg-4">
+                        <div class="photo-container">
+                        <%= attachment_image_tag @customer, :profile_image, :fill, 250, 250, format: 'jpeg', fallback: "no_image.jpg" %>
+                        </div>
+                        <h1 class="text-center"><%= @customer.last_name %><%= @customer.first_name %></h1>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="score">
+                        <h1 class="text-center"><%= @customer.set_total %></h1>
+                    </div>
+                    </div>
+                </div>
+
+                    
+
+   
+        <p class="category">Photographer</p>
+
+        <div class="content">
+            <div class="social-description">
+                <h2>26</h2>
+                <p>Comments</p>
+            </div>
+            <div class="social-description">
+                <h2>26</h2>
+                <p>Comments</p>
+            </div>
+            <div class="social-description">
+                <h2>48</h2>
+                <p>Bookmarks</p>
+            </div>
+        </div>
+</div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section">
+    <div class="container">
+        <div class="button-container">
+            <a href="#button" class="btn btn-primary btn-round btn-lg">Follow</a>
+            <a href="#button" class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip" title="" data-original-title="Follow me on Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#button" class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip" title="" data-original-title="Follow me on Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+    
+
+
+
+
+
+
+
+
 
 <div class="container">
     <h3>合計値</h3>
     <h3><%= @customer.set_total %></h3>
     <h3>マイページ</h3>
     <div class="row">
-    <%= attachment_image_tag @customer, :profile_image, :fill, 300, 300, format: 'jpeg', fallback: "no_image.jpg" %>
+    
         <table border="1">
             <tr>
                 <td>氏名</td>
                 <td>
-                    <%= @customer.last_name %>
-                    <%= @customer.first_name %>
+
                 </td>
             </tr>
             <tr>
                 <td>カナ</td>
                 <td>
-                    <%= @customer.last_name_kana %>
-                    <%= @customer.first_name_kana %>
                 </td>
             </tr>
             <tr>

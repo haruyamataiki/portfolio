@@ -6,6 +6,7 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    @team = @room.team
     @messages = @room.messages
   end
 end

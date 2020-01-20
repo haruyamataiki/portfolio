@@ -1,9 +1,9 @@
 <h1>Chat room</h1>
 
 
-<div id='messages' data-room_id="<%= @room.id %>">
+<div id='messages' data-team_id="<%= @team.id %>" data-room_id="<%= @room.id %>">
   <%= render @messages %>
 </div>
 
 <%= label_tag :content, 'Say something:' %>
-<%= text_field_tag :content, nil, data: { behavior: 'room_speaker' } %>
+<%= text_field_tag :content, nil, data: { behavior: 'team_speaker' } %>
