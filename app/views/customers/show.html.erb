@@ -25,10 +25,10 @@
                     <div class="inline-block">
                       <% if current_customer != @customer %>
                         <% if current_customer.following?(@customer) %>
-                        <button type="button" class="btn-outline-light btn"><%= link_to 'folloowする', customer_relationship_path(@customer), method: :delete %></button>
+                        <button type="button" class="btn-outline-light btn"><%= link_to 'folloowを外す', customer_relationship_path(@customer), method: :delete %></button>
                       <% else %>
                         <button type="button" class="btn-outline-light btn">
-                       <%= link_to 'followを外す', customer_relationships_path(@customer), method: :post %></button>
+                       <%= link_to 'follow', customer_relationships_path(@customer), method: :post %></button>
                         <% end %>
                       <% end %>
                     </div>

@@ -14,22 +14,31 @@ class Customer < ApplicationRecord
   has_many :following_user, through: :follower, source: :followed # 自分がフォローしている人
   has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
 
-  has_many :team_relationships,foreign_key: "follower_id"
+  has_many :team_relationships,foreign_key: "follower_id", dependent: :destroy
   has_many :followed_teams, through: :team_relationships, source: :followed
 
   def follow(customer)
     follower.create(followed_id: customer.id)
   end
-  
   # ユーザーのフォローを外す
   def unfollow(customer)
     follower.find_by(followed_id: customer.id).destroy
   end
-  
   # フォローしていればtrueを返す
   def following?(customer)
     follower.exists?(followed_id: customer.id)
-   
+  end
+
+  def follow_team(team)
+  	team_relationships.create(followed_id: team.id)
+  end
+
+  def unfollow_team(team)
+    team_relationships.find_by(followed_id: team.id).destroy
+  end
+
+  def following_team?(team)
+    team_relationships.exists?(followed_id: team.id)
   end
 
   # 50m走のスコアを点数に変換
@@ -163,6 +172,6 @@ class Customer < ApplicationRecord
    end
 
    def set_total
-   	total_score = convert_jumping + convert_running + convert_agility + convert_sit_ups + convert_grip_strength
+   	 self.total_score = convert_jumping + convert_running + convert_agility + convert_sit_ups + convert_grip_strength
    end
 end

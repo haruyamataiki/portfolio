@@ -4,4 +4,16 @@ class Team < ApplicationRecord
     has_many :team_relationships,foreign_key: "followed_id"
     has_many :follower_customers, through: :team_relationships, source: :follower
     has_one :room
+
+  def follow(team)
+    follower.create(followed_id: team.id)
+  end
+  # ユーザーのフォローを外す
+  def unfollow(team)
+    follower.find_by(followed_id: team.id).destroy
+  end
+  # フォローしていればtrueを返す
+  def following?(team)
+    follower.exists?(followed_id: team.id)
+  end
 end

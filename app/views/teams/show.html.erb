@@ -34,3 +34,17 @@
 
           <%= link_to "hoge", room_path(@team.room.id) %>
 </div>
+<div class="row-follow">
+                <div class="col-lg-12 text-center">
+                    
+                    <div class="inline-block">
+                        <% if current_customer.following_team?(@team) %>
+                        <button type="button" class="btn-outline-light btn"><%= link_to 'folloowを外す', customer_team_relationship_path(current_customer,team_id:@team), method: :delete %></button>
+                      <% else %>
+                        <button type="button" class="btn-outline-light btn">
+                       <%= link_to 'followする', customer_team_relationships_path(current_customer,team_id:@team), method: :post %></button>
+                        <% end %>
+                    </div>
+                    <div class="">follower:<%= @team.follower_customers.count %>
+                </div>
+            </div>
