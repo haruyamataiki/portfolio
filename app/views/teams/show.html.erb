@@ -1,28 +1,36 @@
 <%= render 'layouts/c_header' %>
 <div class="containar">
-    <div class="row">
-        <div class="table-responsive,col-lg-12">
-        	 <%= attachment_image_tag @team, :team_image, :fill, 300, 300, format: 'jpeg', fallback: "no_image.jpg" %>
-        	<table class="table">
-        		<tr>
-              <td><%= @team.name %></td>
+  <div class="row-title">
+    <div class="col-lg-12 m-3 text-center">
+      <div class="team-name"><%= @team.name %></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-8 m-3">
+      <%= attachment_image_tag @team, :team_image, :fill, 750, 450, format: 'jpeg', fallback: "no_image.jpg" %>
+    </div>
+    <div class="col-lg-3 m-3 text-center">
+      <table class ="team-date">
+          <tbody>
+            <tr>
+              <th><h1>score</h1></th>
+              <td><h1>000</h1></td>
+            </tr>
+            <tr>
+              <th><h1>score</h1></th>
+              <td><h1>000</h1></td>
+            </tr>
+             <tr>
+              <th><h1>score</h1></th>
+              <td><h1>000</h1></td>
+            </tr>
+           </tbody>
+        </table>
+    </div>
+  </div>
         			<td><%= @team.team_score %></td>
-			 	</tr>
-			</table>
 
-    	</div>
-  	</div>
-     <div class="row">
-         <table>
-            <tbody>
-              <tr>
-                <td>0月0</td>
-                <td><%=%>00 VS 00</td>
-                <td><%=%>勝ち敗け引き分け </td>
-              </tr>
-             </tbody>
-          </table>
-          
+
+
           <%= link_to "hoge", room_path(@team.room.id) %>
-     </div>
 </div>

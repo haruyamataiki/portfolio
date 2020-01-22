@@ -1,42 +1,52 @@
 <%= render 'layouts/c_header' %>
 <div class="container">
-	<h2>おすすめメンバー</h2>
-    <div class="row">
-    	<% @customers.first(3).each do |customer| %>
-        <div class="col-lg-4 col-md-6 col-sm-6">
-        	<div class="card card-starts">
-        		<div class="card-header card-header-warning card-header-icon">
-        			<div class="card-icon">
-        			<%= attachment_image_tag customer, :profile_image, :fill, 150, 150, format: 'jpeg', fallback: "no_image.jpg" %>
-        			</div>
-        			<h4 class="card-category"><%= link_to customer.last_name,customer_path(customer) %></h4>
-					<h3 class="card-title"><%= customer.set_total %><small>rate</small></h3>
+	<div class="row mt-5"><h2>おすすめ</h2></div>
+	<div class="row">
+	<% @customers.first(3).each do |customer| %>
+		<div class="col-lg-4 col-md-6 col-sm-6 mt-5">
+		    <div class="card card-stats">
+		    	<div class="card-header card-header-warning card-header-icon">
+		      		<div class="card-icon">
+				        <%= attachment_image_tag customer, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+				     </div>
+				     <h4 class="card-category"><%= link_to customer.last_name,customer_path(customer) %></4>
+				     <h2 class="card-title"><%= customer.set_total %><small>rate</small></h2>
 				</div>
-			</div>
+				<div class="card-footer">
+				    <div class="stats">
+				        <i class="material-icons text-danger">warning</i>
+			        <a href="#pablo">Get More Space...</a>
+			      	</div>
+			    </div>
+	  		</div>
 		</div>
-		<% end %>
+	<% end %>
 	</div>
-		<h5><%= link_to 'ユーザー一覧へ', customers_path %></h5>
-
-　　<h2>おすすめチーム</h2>
-    <div class="row">
+	<div class="row"><h4><%= link_to 'ユーザー一覧へ', customers_path %></h4></div>
+    <div class="row mt-5"><h2>おすすめチーム</h2></div>
+    <div class="row mt-5">
     	<% @teams.first(3).each do |team| %>
         <div class="col-lg-4 col-md-6 col-sm-6">
         	<div class="card card-starts">
         		<div class="card-header card-header-warning card-header-icon">
         			<div class="card-icon">
-        			<%= attachment_image_tag team, :team_image, :fill, 150, 150, format: 'jpeg', fallback: "no_image.jpg" %>
+        			<%= attachment_image_tag team, :team_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
         			</div>
-        			<h4 class="card-category"><%= link_to team.name,team_path(team) %></h4>
+        			<h5 class="card-category"><%= link_to team.name,team_path(team) %></h5>
 					<h3 class="card-title"><%= team.team_score %></h3>
 				</div>
+				<div class="card-footer">
+				    <div class="stats">
+				        <i class="material-icons text-danger">warning</i>
+			        <a href="#pablo">Get More Space...</a>
+			      	</div>
+			    </div>
 			</div>
 		</div>
 		<% end %>
 	</div>
 		<h5><%= link_to 'チーム一覧', customers_path %></h5>
-
-　　<h2>対戦募集</h2>
+　  <div class="row mt-5"><h2>対戦募集</h2></div>
     <div class="row">
 		<% @recruitments.first(3).each do |recruitment| %>
 		<table class="table">
@@ -48,5 +58,5 @@
 	    <% end %>
 		</table>
 	    <h5><%= link_to '募集一覧', recruitments_path %></h5>
-
+	</div>
 </div>
