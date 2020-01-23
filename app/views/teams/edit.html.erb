@@ -1,0 +1,7 @@
+<p>Find me in app/views/customers/edit.html.erb</p>
+    <%= form_for(@team) do |f| %>
+        <%= f.attachment_field :team_image %>
+                <%= f.text_field :name %>
+
+    <%= f.submit "編集内容を保存する",class:"btn btn-md btn-primary" %>
+    <% end %>

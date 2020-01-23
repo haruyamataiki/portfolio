@@ -7,7 +7,7 @@
 		    <div class="card card-stats">
 		    	<div class="card-header card-header-warning card-header-icon">
 		      		<div class="card-icon">
-				        <%= attachment_image_tag customer, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+				        <%= attachment_image_tag customer, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg",size:'100x100' %>
 				     </div>
 				     <h4 class="card-category"><%= link_to customer.last_name,customer_path(customer) %></4>
 				     <h2 class="card-title"><%= customer.set_total %><small>rate</small></h2>

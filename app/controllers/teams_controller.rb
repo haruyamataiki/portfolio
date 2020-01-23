@@ -5,7 +5,7 @@ class TeamsController < ApplicationController
 
   def show
   	@team = Team.find(params[:id])
-    @recruitment = Recruitment.find(params[:id])
+    @team_follower= @team.follower_customers
   end
 
 

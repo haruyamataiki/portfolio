@@ -15,12 +15,12 @@
   	</div>
     <div class="row">
         <% if @recruitment.customer == current_customer %>
-            <%= link_to "変更する", edit_recruitment_path, class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench"%>
+            <%= link_to "変更", edit_recruitment_path, class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench"%>
+            <button type="button" class="btn btn-success btn-sm">
+            <%= link_to "削除",recruitment_path(@recruitment), method: :delete %>
+          </button>
         <% else %>
-            <%= form_for(@match_history,url:match_history_path,method: :post) do |f| %>
-            <%= f.hidden_field :recruitment_id, :value => @recruitment.id %>
-            <%= f.submit "申し込む" ,class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
-            <% end %>
+　　　　　　　<%= link_to "チームを見る",homes_path, class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench"%>
         <% end %>
     </div>
 </div>

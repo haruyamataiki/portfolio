@@ -26,16 +26,21 @@ class RecruitmentsController < ApplicationController
     @recruitment = Recruitment.find(params[:id])
   end
 
-   def update
+  def update
     @recruitment = Recruitment.find(params[:id])
-      if @recruitment.update(recruitment_params)
-         redirect_to recruitment_path(@recruitment.id),notice:"successfully"
-      else
-         flash[:notice] = "error"
-         render :edit
-      end
-   end
+    if @recruitment.update(recruitment_params)
+       redirect_to recruitment_path(@recruitment.id),notice:"successfully"
+    else
+       flash[:notice] = "error"
+       render :edit
+    end
+  end
 
+  def destroy
+    @recruitment = Recruitment.find(params[:id])
+    @recruitment.destroy
+    redirect_to recruitments_path
+  end
 
 
 private

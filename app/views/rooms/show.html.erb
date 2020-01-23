@@ -1,41 +1,24 @@
-<h1>Chat room</h1>
-
-
-<div id='messages' data-team_id="<%= @team.id %>" data-room_id="<%= @room.id %>">
-  <%= render @messages %>
-</div>
-
-<%= label_tag :content, 'Say something:' %>
-<%= text_field_tag :content, nil, data: { behavior: 'team_speaker' } %>
-
-
-
-  <!-- ▼LINE風 ここから -->
   <div class="line__container">
-    <!-- タイトル -->
     <div class="line__title">
-    	<h2>チャットルーム</h2>
+      <h2>チャットルーム</h2>
     </div>
-    <!-- ▼会話エリア scrollを外すと高さ固定解除 -->
     <div class="line__contents scroll">
 
-      <!-- 相手の吹き出し -->
-      <div class="line__left">
 
-        <div class="line__left-text">
-          <div class="name"></div>
-          <div class="text"></div>
+
+
+      
+      	<div class="name">
+            <div id='messages' data-team_id="<%= @team.id %>" data-room_id="<%= @room.id %>">
+            <%= render @messages %>
+  <%# 投稿者を特定できるようにメールアドレスを表示させておく %>
+
+
         </div>
+        <div class="text text-center"></div>
       </div>
-
-      <!-- 自分の吹き出し -->
-      <div class="line__right">
-      	<div class="name"></div>
-        <div class="text"></div>
-      </div>
-
-
     </div>
-    <!--　▲会話エリア ここまで -->
+    <div class="text text-center">
+    <%= text_field_tag :content, nil, data: { behavior: 'team_speaker' } %>
   </div>
-  <!--　▲LINE風 ここまで -->
+  </div>

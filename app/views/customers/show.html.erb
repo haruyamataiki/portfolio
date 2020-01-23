@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="profile-image">
-                    <%= attachment_image_tag @customer, :profile_image, :fill, 250, 250, format: 'jpeg',class:"rounded-circle profile-image", fallback: "no_image.jpg" %>
+                    <%= attachment_image_tag @customer, :profile_image, :fill, 300, 300, format: 'jpeg',class:"rounded-circle profile-image", fallback: "no_image.jpg",size:'300x300' %>
                 </div>
             </div>
             <div class="row">

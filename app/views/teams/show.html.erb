@@ -10,33 +10,30 @@
       <%= attachment_image_tag @team, :team_image, :fill, 750, 450, format: 'jpeg', fallback: "no_image.jpg" %>
     </div>
     <div class="col-lg-3 m-3 text-center">
-      <table class ="team-date">
-          <tbody>
-            <tr>
-              <th><h1>score</h1></th>
-              <td><h1>000</h1></td>
-            </tr>
-            <tr>
-              <th><h1>score</h1></th>
-              <td><h1>000</h1></td>
-            </tr>
-             <tr>
-              <th><h1>score</h1></th>
-              <td><h1>000</h1></td>
-            </tr>
-           </tbody>
-        </table>
+        <% if current_customer.following_team?(@team) %>
+      <button type="button" class="btn btn-primary btn-lg active"><%= link_to "Talk room", room_path(@team.room.id) %></button>
+        <% else %>
+      <button type="button" class="btn btn-lg btn-primary" disabled="disabled">Talk room</button>
+        <% end %>
+
+      <div class="row">
+        <h2>メンバー一覧</h2>
+          <% @team_follower.each do |team_follower| %>
+        <div class="col-lg-4 m-2 p-0">
+          <%= attachment_image_tag team_follower, :profile_image, :fill, 130, 130, format: 'jpeg',class:"rounded-circle profile-image", fallback: "no_image.jpg",size:'130x130' %>
+          <%= team_follower.last_name %>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
-        			<td><%= @team.team_score %></td>
-
-
-
-          <%= link_to "hoge", room_path(@team.room.id) %>
 </div>
+
+
+
+
 <div class="row-follow">
                 <div class="col-lg-12 text-center">
-                    
                     <div class="inline-block">
                         <% if current_customer.following_team?(@team) %>
                         <button type="button" class="btn-outline-light btn"><%= link_to 'folloowを外す', customer_team_relationship_path(current_customer,team_id:@team), method: :delete %></button>
@@ -48,3 +45,10 @@
                     <div class="">follower:<%= @team.follower_customers.count %>
                 </div>
             </div>
+
+             <%= link_to "編集する",edit_team_path(@team.id), class:"col-md-12 btn btn-secondary" %>
+
+
+
+
+

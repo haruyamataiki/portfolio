@@ -1,5 +1,9 @@
-
-<div class='message'>
+<% if message.customer == current_customer %>
+    <div class="line__right">
+<% else %>
+    <div class="line__left">
+<% end %>
   <%# 投稿者を特定できるようにメールアドレスを表示させておく %>
-  <p><%= "#{message.customer.first_name}: #{message.content}" %></p>
+  <p><%= "#{message.customer.last_name}: #{message.content}" %></p>
 </div>
+
