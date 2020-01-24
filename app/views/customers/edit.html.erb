@@ -1,15 +1,82 @@
-<h1>Customers#edit</h1>
-<p>Find me in app/views/customers/edit.html.erb</p>
-    <%= form_for(@customer) do |f| %>
-        <%= f.attachment_field :profile_image %>
-                <%= f.text_field :last_name %>
-                <%= f.text_field :first_name %>
-                <%= f.text_field :last_name_kana %>
-                <%= f.email_field :email %>
-                <%= f.number_field :running_score, step: '0.01' %>
-                <%= f.number_field :jumping_score, step: '0.01' %>
-                <%= f.number_field :agility_score %>
+<%= render 'layouts/c_header' %>
+<div class="container">
+<%= form_for(@customer) do |f| %>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="field">
+                <%= attachment_image_tag @customer, :profile_image%><br />
+                <%= f.attachment_field :profile_image %>
+            </div>
+
+            <div class="field mt-2">
+                <%= f.label :last_name, :性 %><br />
+                <%= f.text_field :last_name, autofocus: true %>
+            </div>
+
+            <div class="field mt-2">
+                <%= f.label :first_name, :名 %><br />
+                <%= f.text_field :first_name, autofocus: true %>
+            </div>
+
+            <div class="field mt-2">
+                <%= f.label :last_name_kana, :性 %> (カナ)<br />
+                <%= f.text_field :last_name_kana, autofocus: true %>
+            </div>
+
+            <div class="field mt-2">
+                <%= f.label :first_name_kana, :名 %> (カナ)<br />
+                <%= f.text_field :first_name_kana, autofocus: true %>
+            </div>
+
+            <div class="field mt-2">
+                <%= f.label :email, :メールアドレス %><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </div>
+
+            <div class="field mt-2">
+                <%= f.label :password, :パスワード %>
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> 字以上)</em>
+                <% end %><br />
+                <%= f.password_field :password, autocomplete: "new-password" %>
+            </div>
+
+            <div class="field mt-2">
+                <%= f.label :password_confirmation, :パスワード %> (再確認)<br />
+                <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            </div>
+        </div>
+        <div class="col-lg-6 mt-5">
+
+            <div class="field mt-2">
+                <%= f.label :running_score %>50m走<br />
+                <%= f.number_field :running_score, step: '0.01', autofocus: true %>秒
+            </div>
+
+            <div class="field mt-2">
+                <%= f.label :jumping_score %>立ち幅跳び<br />
+                <%= f.number_field :jumping_score, step: '0.01', autofocus: true %>m
+            </div>
+
+            <div class="field mt-2">
+                <%= f.label :agility_score %>反復横跳び<br />
+                <%= f.number_field :agility_score, autofocus: true%>回
+            </div>
+
+            <div class="field mt-2">
+                <%= f.label :sit_ups_score %>上体起こし<br />
                 <%= f.number_field :sit_ups_score %>
-                <%= f.number_field :grip_strength_score, step: '0.01' %>
-    <%= f.submit "編集内容を保存する",class:"btn btn-md btn-primary" %>
-    <% end %>
+            </div>
+
+            <div class="field mt-2">
+                <%= f.label :grip_strength_score %>握力<br />
+                <%= f.number_field :grip_strength_score, step: '0.01' %>kg
+            </div>
+
+            <div class="field mt-5">
+                <%= f.submit "編集内容を保存する", class: "btn btn-success my-6" %>
+            </div>
+        </div>
+    </div>
+<% end %>
+</div>

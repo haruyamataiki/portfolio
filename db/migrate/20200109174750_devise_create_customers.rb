@@ -37,12 +37,12 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       t.string :last_name_kana
       t.string :first_name_kana
       t.string :profile_image_id
-      t.float :total_score
-      t.float :running_score
-      t.float :jumping_score
-      t.float :agility_score
-      t.float :sit_ups_score
-      t.float :grip_strength_score
+      t.float :total_score, default: 0
+      t.float :running_score, default: 0
+      t.float :jumping_score, default: 0
+      t.float :agility_score, default: 0
+      t.float :sit_ups_score, default: 0
+      t.float :grip_strength_score, default: 0
 
 
 

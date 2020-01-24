@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
     def index
-      @customers = Customer.all
+      @customers = Customer.search(params[:search])
     end
 
     def show

@@ -41,6 +41,15 @@ class Customer < ApplicationRecord
     team_relationships.exists?(followed_id: team.id)
   end
 
+  # 検索バー
+  def self.search(search)
+	if search
+	   Customer.where(['last_name LIKE ?', "%#{search}%"])
+	else
+	   Customer.all
+	end
+  end
+
   # 50m走のスコアを点数に変換
     def convert_running
   	case running_score

@@ -12,18 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_01_18_194533) do
 
-  create_table "admins", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_admins_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
-  end
-
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -39,36 +27,16 @@ ActiveRecord::Schema.define(version: 2020_01_18_194533) do
     t.string "last_name_kana"
     t.string "first_name_kana"
     t.string "profile_image_id"
-    t.float "total_score"
-    t.float "running_score"
-    t.float "jumping_score"
-    t.float "agility_score"
-    t.float "sit_ups_score"
-    t.float "grip_strength_score"
+    t.float "total_score", default: 0.0
+    t.float "running_score", default: 0.0
+    t.float "jumping_score", default: 0.0
+    t.float "agility_score", default: 0.0
+    t.float "sit_ups_score", default: 0.0
+    t.float "grip_strength_score", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
-  end
-
-  create_table "facilities", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "favorites", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "match_histories", force: :cascade do |t|
-    t.integer "win"
-    t.integer "lose"
-    t.integer "draw"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "follower_id"
-    t.integer "followed_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -121,6 +89,7 @@ ActiveRecord::Schema.define(version: 2020_01_18_194533) do
     t.string "name"
     t.string "team_image_id"
     t.integer "team_score"
+    t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "customer_id"

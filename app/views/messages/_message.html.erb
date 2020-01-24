@@ -1,9 +1,16 @@
 <% if message.customer == current_customer %>
-    <div class="line__right">
+    <div class="line_right">
+    	<div class="line_customer"><%= "#{message.customer.last_name}" %>
+    		<%= attachment_image_tag message.customer, :profile_image, :fill, 50, 50, format: 'jpeg',class:"rounded-circle profile-image", fallback: "no_image.jpg",size:'100x100' %>
+    	</div>
+  		<div class="line_message"><%= "#{message.content}"%></div>
 <% else %>
-    <div class="line__left">
+    <div class="line_left">
+    	<div class="line_customer"><%= "#{message.customer.last_name}" %>
+        </div>
+        <div class="line_message"><%= "#{message.content}" %></div>
 <% end %>
-  <%# 投稿者を特定できるようにメールアドレスを表示させておく %>
-  <p><%= "#{message.customer.last_name}: #{message.content}" %></p>
-</div>
+	</div>
+
+
 

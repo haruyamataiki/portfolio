@@ -4,6 +4,7 @@ class CreateTeams < ActiveRecord::Migration[5.2]
       t.string "name"
       t.string "team_image_id"
       t.integer "team_score"
+      t.text "content"
       t.timestamps
     end
   end

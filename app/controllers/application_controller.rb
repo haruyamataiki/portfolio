@@ -2,29 +2,16 @@ class ApplicationController < ActionController::Base
 		before_action :configure_permitted_parameters, if: :devise_controller?
 
 	def after_sign_up_path_for(resource)
-		case resource
-		when Admin
-		"/admin"#サインアップ後に移動するpath
-		when Customer
+		customer_path(resource)
 		"/customers/index"#サインアップ後に移動するpath
-		end
 	end
 
 	def after_sign_in_path_for(resource)
-		case resource
-		when Admin
-		"/admin"#ログイン後に移動するpath
-		when Customer
+		customer_path(resource)
 		"/customers/" + current_customer.id.to_s
-		#ログイン後に移動するpath
-		end
 	end
 	def after_sign_out_path_for(resource_or_scope)
-		if resource_or_scope == :admin
-      		new_admin_session_path	#ログアウト後に移動するpath
-        else
-      		root_path
-        end
+		root_path
 	end
 
 protected

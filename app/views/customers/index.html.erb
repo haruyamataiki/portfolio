@@ -7,7 +7,7 @@
         	<div class="card card-starts">
         		<div class="card-header card-header-warning card-header-icon">
         			<div class="card-icon">
-        			<%= attachment_image_tag customer, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
+        			<%= attachment_image_tag customer, :profile_image, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg",size:'80x80' %>
         			</div>
         			<h5 class="card-category"><%= link_to customer.last_name,customer_path(customer) %></h5>
 					<h5 class="card-title"><%= customer.set_total %><small>rate</small></h5>
@@ -16,3 +16,11 @@
 		</div>
 		<% end %>
 	</div>
+
+    <p>検索</p>
+
+<%= form_tag(@customers_path,:method => 'get') do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag 'Search', :name => nil %>
+<% end %>
+

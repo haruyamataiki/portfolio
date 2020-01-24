@@ -1,5 +1,11 @@
+<h3>meste (メールアドレス登録確認メール）</h3>
+
 <p>Welcome <%= @email %>!</p>
+<p>ご登録ありがとうございます。</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>下記URLをクリックし、ご自身のマイページを作成してみましょう！！</p>
 
+
+<p>--------------------------------------------------------------------------------------------</p>
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p>--------------------------------------------------------------------------------------------</p>

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :admins
   devise_for :customers, controllers: {
   sessions: 'customers/sessions',
   registrations: 'customers/registrations',
@@ -20,7 +19,7 @@ Rails.application.routes.draw do
   resources :recruitments
   resources :messages
   resources :teams
-  resources :match_histories
+
 
   # resourcesを使うとRESTfulなURLを自動生成できる
   resources :rooms, only: %i[show]
