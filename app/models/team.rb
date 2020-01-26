@@ -16,4 +16,14 @@ class Team < ApplicationRecord
   def following?(team)
     follower.exists?(followed_id: team.id)
   end
+
+   # 検索バー
+  def self.search(search)
+    if search
+       Team.where(['name LIKE ?', "%#{search}%"])
+    else
+       Team.all
+    end
+  end
+
 end

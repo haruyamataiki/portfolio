@@ -1,5 +1,9 @@
-   <h2>募集</h2>
-   <div class="row">
+<%= render 'layouts/c_header' %>
+<div class="container">
+   <div class="row mt-5 ">
+    <div class="col-12 text-center">
+      <h2>募集</h2>
+
     <%= form_for(@recruitment) do |f| %>
        <h4>Title</h4>
     <%= f.text_field :title ,class:"col-xs-12"%>
@@ -14,7 +18,7 @@
        <%= f.select :score, ['100-200','200-300','300-400','400-500'] ,class:"col-xs-12"%>代
 
        <h4>ジャンル</h4>
-       <%= f.select :category, ['サッカー','フットサル'],class:"col-xs-12"%>
+       <%= f.select :category, ['対戦','フットサル'],class:"col-xs-12"%>
 
        <h4>本文</h4>
        <%= f.text_area :body ,class:"col-xs-12"%>
@@ -23,3 +27,5 @@
 
     <% end %>
     </div>
+  </div>
+</div>
