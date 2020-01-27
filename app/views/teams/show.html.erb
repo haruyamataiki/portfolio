@@ -6,50 +6,43 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-lg-8 m-3">
-      <%= attachment_image_tag @team, :team_image, :fill, 750, 450, format: 'jpeg', fallback: "no_image.jpg" %>
+    <div class="col-md-6 m-3">
+      <%= attachment_image_tag @team, :team_image, :fill, 700, 450, format: 'jpeg', fallback: "no_image.jpg" %>
     </div>
-    <div class="col-lg-3 m-3 text-center">
-        <% if current_customer.following_team?(@team) %>
-      <button type="button" class="btn btn-primary btn-lg active"><%= link_to "Talk room", room_path(@team.room.id) %></button>
-        <% else %>
-      <button type="button" class="btn btn-lg btn-primary" disabled="disabled">Talk room</button>
-        <% end %>
-
+    <div class="col-md-4 m-3 text-center clearfix">
       <div class="row">
-        <h2>メンバー一覧</h2>
-          <% @team_follower.each do |team_follower| %>
-        <div class="col-lg-4 m-2 p-0">
-          <%= attachment_image_tag team_follower, :profile_image, :fill, 130, 130, format: 'jpeg',class:"rounded-circle profile-image", fallback: "no_image.jpg",size:'130x130' %>
-          <%= team_follower.last_name %>
+        <div class="col-md-12 m-3 text-center ">
+      <h2>MENBER一覧</h2>
+      <% @team_follower.each do |team_follower| %>
+      <div class="profile_teams">
+        <%= attachment_image_tag team_follower, :profile_image, :fill, 80, 80, format: 'jpeg',class:"rounded-circle profile-image", fallback: "no_image.jpg",size:'80x80' %>
+        <p><%= team_follower.last_name %></p>
         </div>
+      <% end %>
+      </div>
+      <div class="col-md-12 m-3 text-center ">
+      <h2><%= @team.follower_customers.count %><small>follower</small></h2>
+        <% if current_customer.following_team?(@team) %>
+         <button type="button" class="btn btn-outline-success"><%= link_to 'folloowを外す', customer_team_relationship_path(current_customer,team_id:@team), method: :delete %></button>
+          <% else %>
+         <button type="button" class="btn btn-outline-warning">
+        <%= link_to 'followする', customer_team_relationships_path(current_customer,team_id:@team), method: :post %></button>
+        <% end %>
+      </div>
+      <div class="col-md-12 m-5 text-center ">
+        <% if current_customer.following_team?(@team) %>
+        <%= link_to "Talk roomに入る",room_path(@team.room.id), class:"col-md-12 btn btn-primary rounded-pill" %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-
-
-
-
-<div class="row-follow">
-                <div class="col-lg-12 text-center">
-                    <div class="inline-block">
-                        <% if current_customer.following_team?(@team) %>
-                        <button type="button" class="btn-outline-light btn"><%= link_to 'folloowを外す', customer_team_relationship_path(current_customer,team_id:@team), method: :delete %></button>
-                      <% else %>
-                        <button type="button" class="btn-outline-light btn">
-                       <%= link_to 'followする', customer_team_relationships_path(current_customer,team_id:@team), method: :post %></button>
-                        <% end %>
-                    </div>
-                    <div class="">follower:<%= @team.follower_customers.count %>
-                </div>
-            </div>
-<div class="row">
+  <div class="row">
   <% if @team.customer == current_customer %>
-             <%= link_to "編集する",edit_team_path(@team.id), class:"col-md-12 btn btn-secondary" %>
-                                     <button type="button" class="btn-outline-light btn"><%= link_to 'チームを削除する', team_path(@team.id), method: :delete %></button>
-                      <% end %>
+     <%= link_to "編集する",edit_team_path(@team.id), class:"col-md-12 btn btn-secondary" %>
+     <%= link_to "解除する",team_path(@team.id),method: :delete, class:"col-md-12 btn btn-secondary"%>
+  <% end %>
+</div>
 
 
 

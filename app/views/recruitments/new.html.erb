@@ -1,31 +1,30 @@
 <%= render 'layouts/c_header' %>
 <div class="container">
-   <div class="row mt-5 ">
-    <div class="col-12 text-center">
-      <h2>募集</h2>
+  <div class="row mt-5 ">
+    <div class="col-2"></div>
+    <div class="col-6 text-left">
+     <h2>新規募集</h2>
 
-    <%= form_for(@recruitment) do |f| %>
-       <h4>タイトル</h4>
-    <%= f.text_field :title ,class:"col-xs-12"%>
-    
-           <h4>ジャンル</h4>
-       <%= f.select :category, ['サッカー','フットサル'],class:"col-xs-12"%>
+      <%= form_for(@recruitment) do |f| %>
+         <h4>Title</h4>
+      <%= f.text_field :title ,class:"col-md-6"%>
 
-       <h4>日時</h4>
-       <%= f.date_field :date ,class:"col-xs-12"%>
+         <h4>日時</h4>
+         <%= f.date_field :date ,class:"col-md-6"%>
 
-       <h4>活動場所</h4>
-       <%= f.select :spot, ['東京','千葉','神奈川','埼玉'],class:"col-xs-12"%>
+         <h4>場所</h4>
+         <%= f.select :spot, ['東京','千葉','神奈川','埼玉'],class:"col-md-6"%>
 
-       <h4>TEAMレート(平均)</h4>
-       <%= f.select :score, ['100-200','200-300','300-400','400-500'] ,class:"col-xs-12"%>代
+         <h4>レート</h4>
+         <%= f.select :score, ['100-200','200-300','300-400','400-500'] ,class:"col-md-6"%>代
 
+         <h4>ジャンル</h4>
+         <%= f.select :category, ['サッカー','フットサル'],class:"col-md-6"%>
 
+         <h4>本文</h4>
+         <%= f.text_area :body ,class:"col-md-6"%>
 
-       <h4>本文</h4>
-       <%= f.text_area :body ,class:"col-xs-12"%>
-
-       <%= f.submit '送信',class:"col-xs-12 btn btn-primary"%>
+       <%= f.submit '送信',class:"col-md-6 m-3 btn btn-primary"%>
 
     <% end %>
     </div>

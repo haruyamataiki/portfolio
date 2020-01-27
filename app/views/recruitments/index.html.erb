@@ -3,10 +3,21 @@
     <div class="row">
         <div class="col-lg-12 mt-4 text-center">
             <h3>チーム募集一覧</h3>
-        	<% @recruitments.each do |recruitment| %>
             <table class="table table-striped">
+                <tr>
+                    <th>投稿者</th>
+                    <th>投稿日時</th>
+                    <th>タイトル</th>
+                    <th>本文</th>
+                    <th></th>
+                </tr>
+        	<% @recruitments.each do |recruitment| %>
         		<tr>
-        			<td>投稿者</td>
+        			<td>
+                        <%= attachment_image_tag recruitment.customer, :profile_image, :fill, 50, 50, format: 'jpeg',class:" profile-image", fallback: "no_image.jpg",size:'50x50' %>
+                        <%= recruitment.customer.last_name %><%= recruitment.customer.first_name %>
+                    </td>
+                    <td><%= recruitment.date.strftime("%Y-%m-%d") %></td>
         			<td><%= recruitment.title %></td>
         			<td><%= recruitment.body %></td>
         			<td><%= link_to '詳細', recruitment_path(recruitment.id) %></td>

@@ -8,7 +8,6 @@ Rails.application.routes.draw do
 
   root :to => 'homes#home'
   resources :homes
-  get'home/about' => 'homes#about'
 
   resources :customers do
     resources :relationships,only: [:create,:destroy]

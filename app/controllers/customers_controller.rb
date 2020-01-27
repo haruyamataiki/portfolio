@@ -17,20 +17,14 @@ class CustomersController < ApplicationController
     	@customer = Customer.find(params[:id])
     end
 
-    def ensure_correct_user
-      @cusotmer = customer.find(params[:id])
-      if @customer.id != current_customer.id
-      redirect_to customer_path(current_customer.id)
-      end
-    end
 
-      def update
+    def update
       @customer = Customer.find(params[:id])
       if @customer.update(customer_params)
       @customer.set_total
       @customer.save
       redirect_to customer_path(@customer.id)
-    else
+      else
       redirect_to customers_path
       end
     end
@@ -42,5 +36,12 @@ class CustomersController < ApplicationController
     end
     def recruitment_params
       params.require(:recruitment).permit(:title, :body, :category, :score, :date, :spot)
+    end
+
+    def ensure_correct_customer
+      @customer = Customer.find(params[:id])
+      if @customer.id != current_customer.id
+      redirect_to customer_path(current_customer.id)
+      end
     end
 end

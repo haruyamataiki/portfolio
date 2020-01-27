@@ -2,10 +2,10 @@
 <div class="container">
 	<div class="row">
 	</div>
-	<div class="row mt-5"><h2>おすすめ</h2></div>
+	<div class="row mt-5"><h4>おすすめユーザー</h4></div>
 	<div class="row">
 	<% @customers.first(3).each do |customer| %>
-		<div class="col-lg-4 col-md-6 col-sm-6 mt-5">
+		<div class="col-lg-4 col-md-6 col-sm-6 mt-4">
 		    <div class="card card-stats">
 		    	<div class="card-header card-header-warning card-header-icon">
 		      		<div class="card-icon">
@@ -16,17 +16,19 @@
 				</div>
 				<div class="card-footer">
 				    <div class="stats">
-				        <i class="material-icons text-danger">warning</i>
-			        <a href="#pablo">Get More Space...</a>
+				        <i class="material-icons text-secondary">登録日</i>
+			        <a href="#pablo"><%=customer.created_at.strftime("%Y-%m-%d") %></a>
 			      	</div>
 			    </div>
 	  		</div>
 		</div>
 	<% end %>
 	</div>
-	<div class="row"><h4><%= link_to 'ユーザー一覧へ', customers_path %></h4></div>
-    <div class="row mt-5"><h2>おすすめチーム</h2></div>
-    <div class="row mt-5">
+	<div class="row">
+		<div class="col-12 p-2 text-right"><h5><%= link_to 'ユーザー一覧へ', customers_path %></h5></div>
+	</div>
+    <div class="row mt-5"><h4>おすすめチーム</h4></div>
+    <div class="row mt-4">
     	<% @teams.first(3).each do |team| %>
         <div class="col-lg-4 col-md-6 col-sm-6">
         	<div class="card card-starts">
@@ -39,26 +41,37 @@
 				</div>
 				<div class="card-footer">
 				    <div class="stats">
-				        <i class="material-icons text-danger">warning</i>
-			        <a href="#pablo">Get More Space...</a>
+				        <i class="material-icons text-secondary">登録日</i>
+			        <a href="#pablo"><%=team.created_at.strftime("%Y-%m-%d") %></a>
 			      	</div>
 			    </div>
 			</div>
 		</div>
 		<% end %>
 	</div>
-		<h5><%= link_to 'チーム一覧', customers_path %></h5>
-　  <div class="row mt-5"><h2>対戦募集</h2></div>
+	<div class="row">
+		<div class="col-12 p-2 text-right"><h5><%= link_to 'チーム一覧', customers_path %></h5></div>
+	</div>
+　  <div class="row mt-3"><h4>募集情報</h4></div>
     <div class="row">
-		<% @recruitments.first(3).each do |recruitment| %>
-		<table class="table">
+    	<table class="table table-striped"">
+    		<tr>
+    			<th>投稿日</th>
+    			<th>募集した人</th>
+    			<th>タイトル</th>
+    			<th></th>
+    		</tr>
+		<% @recruitments.first(5).each do |recruitment| %>
 			<tr>
 			  <td><%= recruitment.date.strftime("%Y-%m-%d") %></td>
+			  <td><%= recruitment.customer.last_name %><%= recruitment.customer.first_name %></td>
 			  <td><%= recruitment.title %></td>
 			  <td><%= link_to '詳細へ',recruitment_path(recruitment) %></td>
 			</tr>
 	    <% end %>
 		</table>
-	    <h5><%= link_to '募集一覧', recruitments_path %></h5>
+	</div>
+	<div class="row">
+		<div class="col-12 p-2 text-right"><h5><%= link_to '募集一覧', recruitments_path %></h5></div>
 	</div>
 </div>

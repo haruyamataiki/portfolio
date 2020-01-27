@@ -1,27 +1,31 @@
-
+<%= render 'layouts/c_header' %>
 <div class="containar">
     <div class="row">
-        <div class="table-responsive,col-lg-12">
+        <div class="col-3"></div>
+        <div class="col-6 mt-5 text-center">
         	<table class="table">
-        		<tr>
-                    <td><%= @recruitment.date %></td>
-        			<td><%= @recruitment.customer.last_name %></td>
-        			<td><%= @recruitment.title %></td>
-        			<td><%= @recruitment.body %></td>
-			 	</tr>
+                <h3><%= @recruitment.date.strftime("%m月%d日")%><%= @recruitment.title %></h3>
+            <% if @recruitment.customer == current_customer %>
+                <%= link_to "変更する", edit_recruitment_path, class:"col-md-6 btn btn-success "%>
+                <%= link_to "削除する",recruitment_path(@recruitment),method: :delete, class:"col-md-6 btn btn-danger"%>
+            <% else %>
+　　　　　　　<%= link_to "チームを見る",team_path(@team.id), class:"col-md-6 btn btn-warning"%>
+            <% end %>
+                <tbody>
+            		<tr>
+                        <th>名前</th>
+            			<td><%= attachment_image_tag @recruitment.customer, :profile_image, :fill, 50, 50, format: 'jpeg',class:" profile-image", fallback: "no_image.jpg",size:'50x50' %><%= @recruitment.customer.last_name %><%= @recruitment.customer.first_name %></td>
+                    </tr>
+                    <tr>
+                        <th>本文</th>
+            			<td><%= @recruitment.body %></td>
+    			 	</tr>
+                </tbody>
 			</table>
 
     	</div>
-  	</div>
-    <div class="row">
-        <% if @recruitment.customer == current_customer %>
-            <%= link_to "変更", edit_recruitment_path, class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench"%>
-            <button type="button" class="btn btn-success btn-sm">
-            <%= link_to "削除",recruitment_path(@recruitment), method: :delete %>
-          </button>
-        <% else %>
-　　　　　　　<%= link_to "チームを見る",team_path(@team.id), class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench"%>
-        <% end %>
-    </div>
+  	    </div>
+</div>
+
 </div>
 
