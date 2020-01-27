@@ -53,7 +53,7 @@
 		<% @recruitments.first(3).each do |recruitment| %>
 		<table class="table">
 			<tr>
-			  <td><%= recruitment.date %></td>
+			  <td><%= recruitment.date.strftime("%Y-%m-%d") %></td>
 			  <td><%= recruitment.title %></td>
 			  <td><%= link_to '詳細へ',recruitment_path(recruitment) %></td>
 			</tr>

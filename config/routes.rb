@@ -4,12 +4,11 @@ Rails.application.routes.draw do
   registrations: 'customers/registrations',
   passwords: 'customers/passwords',
   confirmations: 'customers/confirmations'
-
   }
-  #root to: 'rooms#show'
+
   root :to => 'homes#home'
   resources :homes
-
+  get'home/about' => 'homes#about'
 
   resources :customers do
     resources :relationships,only: [:create,:destroy]
@@ -20,8 +19,6 @@ Rails.application.routes.draw do
   resources :messages
   resources :teams
 
-
-  # resourcesを使うとRESTfulなURLを自動生成できる
   resources :rooms, only: %i[show]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.htm

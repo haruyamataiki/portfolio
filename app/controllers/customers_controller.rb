@@ -1,4 +1,5 @@
 class CustomersController < ApplicationController
+  before_action :ensure_correct_customer, {only: [:edit]}
     def index
       @customers = Customer.search(params[:search])
     end
@@ -14,6 +15,13 @@ class CustomersController < ApplicationController
 
     def edit
     	@customer = Customer.find(params[:id])
+    end
+
+    def ensure_correct_user
+      @cusotmer = customer.find(params[:id])
+      if @customer.id != current_customer.id
+      redirect_to customer_path(current_customer.id)
+      end
     end
 
       def update

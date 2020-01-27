@@ -45,8 +45,11 @@
                     <div class="">follower:<%= @team.follower_customers.count %>
                 </div>
             </div>
-
+<div class="row">
+  <% if @team.customer == current_customer %>
              <%= link_to "編集する",edit_team_path(@team.id), class:"col-md-12 btn btn-secondary" %>
+                                     <button type="button" class="btn-outline-light btn"><%= link_to 'チームを削除する', team_path(@team.id), method: :delete %></button>
+                      <% end %>
 
 
 

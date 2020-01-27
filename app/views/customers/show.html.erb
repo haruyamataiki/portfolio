@@ -2,7 +2,7 @@
 <div class="wrapper">
     <div class="page-header-image" data-parallax="true" style="background-image: url(&quot;../assets/img3.jpg&quot;);">
         <div class="container">
-            <div class="row">
+            <div class="row-top">
                 <div class="profile-image">
                     <%= attachment_image_tag @customer, :profile_image, :fill, 300, 300, format: 'jpeg',class:"rounded-circle profile-image", fallback: "no_image.jpg",size:'300x300' %>
                 </div>
@@ -65,15 +65,19 @@
                 <div class="col-lg-6 mt-4 text-center">
                     <h1>MYTEAM</h1>
                     <% @teams.each do |team| %>
-                    <h2><%= team.name %><%= link_to '詳細', team_path(team.id) %></h2>
+                    <h2><%= link_to team_path(team.id) do %><%= team.name %>
+                        <% end %>
+                    </h2>
                     <%= attachment_image_tag team, :team_image, :fill, 300, 200, format: 'jpeg', fallback: "no_image.jpg" %>
                     <% end %>
+                    <%= flash[:notice] %>
                     <%= link_to "NEW TEAM", new_team_path, class:"col-md-12 mt-3 btn btn-secondary" %>
+
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12 mt-4 text-center">
-                    <h3>チーム募集一覧</h3>
+                    <h3>チーム募集一覧</h3><i class="fas fa-cog"></i>
                     <% @recruitments.each do |recruitment| %>
                     <table class="table table-striped">
                         <tr>
@@ -88,3 +92,4 @@
         </div>
     </div>
 </div>
+

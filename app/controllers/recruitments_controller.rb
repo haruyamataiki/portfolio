@@ -5,6 +5,7 @@ class RecruitmentsController < ApplicationController
 
   def show
     @recruitment = Recruitment.find(params[:id])
+    @team = @recruitment.customer.teams.first
   end
 
   def new

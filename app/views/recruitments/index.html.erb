@@ -1,17 +1,18 @@
 <%= render 'layouts/c_header' %>
 <div class="container">
     <div class="row">
-        <div class="table-responsive,col-lg-12">
-        	<table class="table">
-        		<% @recruitments.each do |recruitment| %>
+        <div class="col-lg-12 mt-4 text-center">
+            <h3>チーム募集一覧</h3>
+        	<% @recruitments.each do |recruitment| %>
+            <table class="table table-striped">
         		<tr>
         			<td>投稿者</td>
         			<td><%= recruitment.title %></td>
         			<td><%= recruitment.body %></td>
         			<td><%= link_to '詳細', recruitment_path(recruitment.id) %></td>
 			 	</tr>
-				<% end %>
 			</table>
+            <% end %>
         </div>
     </div>
 </div>

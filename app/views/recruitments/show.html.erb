@@ -20,7 +20,7 @@
             <%= link_to "削除",recruitment_path(@recruitment), method: :delete %>
           </button>
         <% else %>
-　　　　　　　<%= link_to "チームを見る",homes_path, class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench"%>
+　　　　　　　<%= link_to "チームを見る",team_path(@team.id), class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench"%>
         <% end %>
     </div>
 </div>

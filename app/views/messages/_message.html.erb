@@ -1,7 +1,7 @@
 <% if message.customer == current_customer %>
     <div class="line_right">
     	<div class="line_customer"><%= "#{message.customer.last_name}" %>
-    		<%= attachment_image_tag message.customer, :profile_image, :fill, 50, 50, format: 'jpeg',class:"rounded-circle profile-image", fallback: "no_image.jpg",size:'100x100' %>
+    		<%= attachment_image_tag message.customer, :profile_image, :fill, 50, 50, format: 'jpeg',class:"rounded-circle profile-image", fallback: "no_image.jpg",size:'50x50' %>
     	</div>
   		<div class="line_message"><%= "#{message.content}"%></div>
 <% else %>
