@@ -31,7 +31,7 @@
       </div>
       <div class="col-md-12 m-5 text-center ">
         <% if current_customer.following_team?(@team) %>
-        <%= link_to "Talk roomに入る",room_path(@team.room.id), class:"col-md-12 btn btn-primary rounded-pill" %>
+        <%= link_to "Talk roomに入る",room_path(@team.room.id), data: {"turbolinks" => false}, class:"col-md-12 btn btn-primary rounded-pill" %>
         <% end %>
       </div>
     </div>
