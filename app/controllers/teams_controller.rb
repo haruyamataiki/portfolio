@@ -1,4 +1,5 @@
 class TeamsController < ApplicationController
+  before_action :authenticate_customer!
   def index
   	@teams = Team.search(params[:search])
   end
@@ -7,7 +8,6 @@ class TeamsController < ApplicationController
   	@team = Team.find(params[:id])
     @team_follower= @team.follower_customers
   end
-
 
   def new
   	 # if current_customer.teams.find_by(team_id: params[:team_id]).empty?
@@ -50,7 +50,6 @@ class TeamsController < ApplicationController
     @team.destroy
     redirect_to customers_path
   end
-
 
 private
     def team_params

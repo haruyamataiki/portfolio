@@ -3,14 +3,8 @@
     <div class="row">
         <div class="col-3"></div>
         <div class="col-6 mt-5 text-center">
-        	<table class="table">
+        	<table class="table ">
                 <h3><%= @recruitment.date.strftime("%m月%d日")%><%= @recruitment.title %></h3>
-            <% if @recruitment.customer == current_customer %>
-                <%= link_to "変更する", edit_recruitment_path, class:"col-md-6 btn btn-success "%>
-                <%= link_to "削除する",recruitment_path(@recruitment),method: :delete, class:"col-md-6 btn btn-danger"%>
-            <% else %>
-　　　　　　　<%= link_to "チームを見る",team_path(@team.id), class:"col-md-6 btn btn-warning"%>
-            <% end %>
                 <tbody>
             		<tr>
                         <th>名前</th>
@@ -22,10 +16,13 @@
     			 	</tr>
                 </tbody>
 			</table>
-
-    	</div>
+            <% if @recruitment.customer == current_customer %>
+                <%= link_to "変更する", edit_recruitment_path, class:"col-md-6 btn btn-success "%>
+                <%= link_to "削除する",recruitment_path(@recruitment),method: :delete, class:"col-md-6 btn btn-danger"%>
+            <% else %>
+　　　　　　　<%= link_to "チームを見る",team_path(@team.id), class:"col-md-6 btn btn-warning"%>
+            <% end %>
   	    </div>
-</div>
-
+    </div>
 </div>
 

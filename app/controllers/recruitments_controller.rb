@@ -1,4 +1,5 @@
 class RecruitmentsController < ApplicationController
+  before_action :authenticate_customer!
   def index
 	  @recruitments = Recruitment.all
   end

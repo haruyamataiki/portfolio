@@ -1,4 +1,5 @@
 class CustomersController < ApplicationController
+  before_action :authenticate_customer!
   before_action :ensure_correct_customer, {only: [:edit]}
     def index
       @customers = Customer.search(params[:search])
@@ -10,13 +11,9 @@ class CustomersController < ApplicationController
       @teams = @customer.teams
     end
 
-    def new
-    end
-
     def edit
     	@customer = Customer.find(params[:id])
     end
-
 
     def update
       @customer = Customer.find(params[:id])
