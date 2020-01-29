@@ -13,7 +13,6 @@ Rails.application.routes.draw do
     resources :relationships,only: [:create,:destroy]
     resources :team_relationships,only: [:create,:destroy]
   end
-  # resources :chat_rooms
   resources :recruitments
   resources :messages
   resources :teams

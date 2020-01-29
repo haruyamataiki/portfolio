@@ -1,4 +1,5 @@
 class HomesController < ApplicationController
+	#current_customerに近いスコアのユーザーを算出
 	def index
 		@recruitments = Recruitment.all
 		@customers = Customer.where.not(id:current_customer.id)

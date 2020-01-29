@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# 終わったらEC２で、
+# bundle exec rails db:seed RAILS_ENV=production
+# で実施
+
+User.create(email: 'a@a',name: 'namae')
+
+

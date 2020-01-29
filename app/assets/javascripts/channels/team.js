@@ -11,7 +11,8 @@ $(function() {
     },
 
     received: function(data) {
-      return $('#messages').append(data['message']);
+      $('#messages').append(data['message']);
+      $('.scroll').scrollTop($('.scroll').prop("scrollHeight"))
     },
 
     speak: function(message) {
