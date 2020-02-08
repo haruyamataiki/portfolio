@@ -29,7 +29,7 @@ Portfolio -mesta
 
 上記記載のライブラリを各フォームからダウンロード後  
 bundel installを行う  
-・git clone https://github.com/webcamp-201911-yankees/nagano_cake.git  
+・git clone https://github.com/haruyamataiki/portfolio.git
 ・cd portfolio
 ・rails db:maigrate    
 ・rails s -b 0.0.0.0  
